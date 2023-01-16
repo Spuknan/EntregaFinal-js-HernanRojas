@@ -1,0 +1,24 @@
+.button-primary {
+   background: $color-accent;
+   background: linear-gradient(90deg, $color-accent 0%, $color-accent2 100%);
+   border: none;
+   border-radius: 5px;
+   color: $color-dark;
+   padding: 30px;
+   transition: 0.2s;
+   height: 80px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+
+
+   &:hover {
+      transform: scale(1.02);
+   }
+
+   &:active {
+      transform: scale(1);
+   }
+}

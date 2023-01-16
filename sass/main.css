@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+* p, * h1, * h2, * h3, * h4, * h5, * h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  color: #e5f876;
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.main-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #1f2023;
+  padding: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    padding: 30px;
+  }
+}
+.button-primary {
+  background: #e5f876;
+  background: linear-gradient(90deg, #e5f876 0%, #daadfa 100%);
+  border: none;
+  border-radius: 5px;
+  color: #1f2023;
+  padding: 30px;
+  transition: 0.2s;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.button-primary:hover {
+  transform: scale(1.02);
+}
+.button-primary:active {
+  transform: scale(1);
+}
+
+.options__card {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  gap: 15px;
+  background: #37393e;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 10px 10px 20px 0px rgba(28, 15, 53, 0.3);
+  -webkit-box-shadow: 10px 10px 20px 0px rgba(28, 15, 53, 0.3);
+  -moz-box-shadow: 10px 10px 20px 0px rgba(28, 15, 53, 0.3);
+}
+.options__card .options__button {
+  min-width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+  border-radius: 2px;
+  border: 2px solid #e5f876;
+  color: #e5f876;
+  text-align: start;
+  padding: 1rem;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+.options__card .options__button:hover {
+  transform: scale(1.02);
+  color: #1f2023;
+  background: #e5f876;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.5);
+}
+.options__card .options__button:active {
+  transform: scale(1);
+}
+.options__card .options__button p {
+  margin: 0;
+  padding: 0;
+}
+.options__card .options__button i {
+  font-size: 1.5rem;
+  width: 40px;
+}
+
+.login-card-container {
+  padding: 20px;
+  border-radius: 4px;
+  background: #37393e;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #ffffff;
+}
+.login-card-container input {
+  width: 100%;
+  padding: 5px;
+  padding-left: 10px;
+  height: 2rem;
+  border-radius: none;
+  border: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3) inset;
+}
+.login-card-container input:focus-visible {
+  outline: 2px solid #daadfa;
+}
+.login-card-container .login-card-inputgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-card-container .login-card-inputgroup label {
+  font-size: 0.8rem;
+}
+.login-card-container #userErrorMsg, .login-card-container #passwordErrorMsg {
+  display: none;
+  font-size: 0.7rem;
+  color: #daadfa;
+}
+.login-card-container .login-card-button {
+  width: 100%;
+}
+.login-card-container .login-card-button button {
+  width: 100%;
+  border-radius: none;
+  border: 2px solid #e5f876;
+  background: none;
+  color: #e5f876;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  font-weight: 700;
+  transition: 0.4s ease all;
+  cursor: pointer;
+}
+.login-card-container .login-card-button button:hover {
+  transform: scale(1.02);
+  transition: 0.2s ease;
+  background: #e5f876;
+  color: #1f2023;
+}
+.login-card-container .login-card-button button:active {
+  transform: scale(0.99);
+}
+
+.end__container {
+  text-align: center;
+  background: #37393e;
+  max-width: 600px;
+  border-radius: 4px;
+  padding: 10px;
+}
+.end__container h2 {
+  color: #e5f876;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.end__container p {
+  color: #e5f876;
+  font-size: 0.8rem;
+}
+
+#usuarioIndividual {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  text-align: left;
+  border-bottom: 1px solid #daadfa;
+  font-size: 1rem;
+}/*# sourceMappingURL=main.css.map */

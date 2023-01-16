@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CoderGYM | Login</title>
+   <link rel="stylesheet" href="./sass/main.css">
+</head>
+
+<body>
+   <div class="main-container">
+      <h2 class="title">CODERGYM</h2>
+      <div class="login-card-container">
+         <form onsubmit="return false">
+            <div class="login-card-inputgroup">
+               <div class="login-card-inputitem">
+                  <label for="">Usuario</label>
+                  <input type="text" id="loginUsername">
+                  <p id="userErrorMsg">*Usuario no encontrado, vuelva a intentarlo.</p>
+               </div>
+               <div class="login-card-inputitem">
+                  <label for="">Contraseña</label>
+                  <input type="password" id="loginPassword">
+                  <p id="passwordErrorMsg">*Contraseña incorrecta, vuelva a intentarlo.</p>
+               </div>
+               <div class="login-card-button"><button type="submit" id="loginButton">Ingresar</button></div>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <script src="./js/login.js"></script>
+</body>
+
+</html>

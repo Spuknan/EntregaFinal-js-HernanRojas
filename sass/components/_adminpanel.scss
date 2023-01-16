@@ -1,0 +1,27 @@
+.end__container {
+   text-align: center;
+   background: lighten($color-dark, 10);
+   max-width: 600px;
+   border-radius: 4px;
+   padding: 10px;
+   
+   h2 {
+      color: $color-accent;
+      font-size: 1rem;
+      font-weight: 700;
+   }
+
+   p {
+      color: $color-accent;
+      font-size: 0.8rem;
+   }
+}
+
+
+#usuarioIndividual {
+   margin-bottom: 15px;
+   padding-bottom: 5px;
+   text-align: left;
+   border-bottom: 1px solid $color-accent2;
+   font-size: 1rem;
+}
