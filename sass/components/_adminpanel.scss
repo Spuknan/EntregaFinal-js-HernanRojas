@@ -25,3 +25,9 @@
    border-bottom: 1px solid $color-accent2;
    font-size: 1rem;
 }
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+   background: rgba(0,0,0,0.8)!important;
+}
+
+

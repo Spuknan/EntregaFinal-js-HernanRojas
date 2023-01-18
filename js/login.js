@@ -29,17 +29,18 @@ localStorage.setItem('usersArray', JSON.stringify(usersArray));
 
 // Clase suscripciones.
 class NivelSuscripcion {
-   constructor(id, nombre, duracion) {
+   constructor(id, nombre, duracion, precio) {
       this.id = id;
       this.nombre = nombre;
       this.duracion = duracion;
+      this.precio = precio;
    }
 }
 const nivelSuscripcionArray = [
-   new NivelSuscripcion(0, 'Deshabilitada', 0),
-   new NivelSuscripcion(1, 'Mensual', 1),
-   new NivelSuscripcion(2, 'Trimestral', 3),
-   new NivelSuscripcion(3, 'Anual', 12)
+   new NivelSuscripcion(0, "Deshabilitada", 0, 0),
+   new NivelSuscripcion(1, "Mensual", 1, 4500),
+   new NivelSuscripcion(2, "Trimestral", 3, 12500),
+   new NivelSuscripcion(3, "Anual", 12, 48000)
 ];
 // Registrando la base de datos de suscripciones en el localStorage.
 localStorage.setItem('suscripcionesArray', JSON.stringify(nivelSuscripcionArray));
