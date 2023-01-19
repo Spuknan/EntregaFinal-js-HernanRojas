@@ -35,6 +35,92 @@ document.getElementById("irALogin").addEventListener("click", irALogin);
 
 
 
+// Funcion para crear nuevos usuarios.
+function crearUsuario() {
+   // Mostrar alerta para ingresar los datos del nuevo usuario
+   Swal.fire({
+      title: 'Agregar nuevo usuario',
+      html: `
+      <div id="agregarUsuarioForm">
+      <div><label for="nombre">Nombre:
+      <input id="nombre" placeholder="Nombre" class="swal2-input"></div>
+      <div><label for="apellido">Apellido:
+      <input id="apellido" placeholder="Apellido" class="swal2-input"></div>
+      <div><label for="DNI">DNI:
+      <input id="dni" placeholder="DNI" class="swal2-input"></div>
+      <div><label for="fechaNacimiento">Fecha de nacimiento:
+      <input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento (dd/mm/yyyy)" class="swal2-input"></div>
+      <div><label for="usuario">Nombre de usuario
+      <input id="usuario" placeholder="Usuario" class="swal2-input"></div>
+      <div><label for="contrasena">Contraseña:
+      <input id="contrasena" placeholder="Contraseña" class="swal2-input"></div>
+      <div><label for="ultimoNivelSuscripcion">Suscripcion:
+      <input type="date" id="ultimoNivelSuscripcion" placeholder="Último nivel de suscripción (0, 1, 2, 3)" class="swal2-input"></div>
+      <div><label for="ultimaFechaPago">Fecha de pago:
+      <input type="date" id="ultimaFechaPago" placeholder="Última fecha de pago (dd/mm/yyyy)" class="swal2-input"></div>
+      <div><label>Es administrador:</label>
+      <input id="admin" type="checkbox" class="swal2-checkbox"></div>
+      </div>
+     `,
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      cancelButtonText: 'Cancelar',
+      preConfirm: () => {
+         return {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            dni: document.getElementById('dni').value,
+            fechaNacimiento: document.getElementById('fechaNacimiento').value,
+            usuario: document.getElementById('usuario').value,
+            contrasena: document.getElementById('contrasena').value,
+            ultimoNivelSuscripcion: document.getElementById('ultimoNivelSuscripcion').value,
+            ultimaFechaPago: document.getElementById('ultimaFechaPago').value,
+            admin: document.getElementById('admin').checked //<-- changed from .value to .checked
+         }
+      }
+   }).then((result) => {
+      if (result.value) {
+         // Obtener el próximo ID para el nuevo usuario
+         let nextId = usersArray.length;
+
+         // Verificar si el usuario ya existe
+         let existingUser = usersArray.find(user => user.usuario === result.value.usuario);
+
+         if (existingUser) {
+            // Mostrar mensaje de error si el usuario ya existe
+            Swal.fire({
+               title: 'Error',
+               text: 'El usuario ya existe, por favor elija otro',
+               icon: 'error'
+            });
+         } else {
+            // Agregar el nuevo usuario al array de usuarios
+            usersArray.push({
+               id: nextId,
+               nombre: result.value.nombre,
+               apellido: result.value.apellido,
+               dni: result.value.dni,
+               fechaNacimiento: result.value.fechaNacimiento,
+               usuario: result.value.usuario,
+               contrasena: result.value.contrasena,
+               ultimoNivelSuscripcion: result.value.ultimoNivelSuscripcion,
+               ultimaFechaPago: result.value.ultimaFechaPago,
+               admin: result.value.admin
+            });
+
+            // Actualizar el localStorage con el nuevo array de usuarios
+            localStorage.setItem('usersArray', JSON.stringify(usersArray));
+            // Mostrar mensaje de éxito
+            Swal.fire({
+               title: 'Usuario agregado',
+               text: 'El usuario ha sido agregado exitosamente',
+               icon: 'success',
+               confirmButtonText: 'OK'
+            });
+         }
+      }
+   });
+}
 
 
 
@@ -263,13 +349,12 @@ function irALogin() {
       cancelButtonText: 'No',
    }).then((result) => {
       if (result.value) {
-         console.log("Usuario seleccionó sí");
          localStorage.removeItem("userVerificado");
          localStorage.removeItem("admin");
          localStorage.removeItem("userIndex");
          window.location.href = "../index.html";
       } else {
-         console.log("Usuario seleccionó no")
+         return;
       }
    });
 }
