@@ -32,6 +32,12 @@ document.getElementById("crearUsuario").addEventListener("click", crearUsuario);
 document.getElementById("irALogin").addEventListener("click", irALogin);
 
 
+
+
+
+
+
+
 // Funcion para ver clientes atrasados.
 function clientesAtrasados() {
    let clientesAtrasados = [];
@@ -313,3 +319,33 @@ function validarSuscripcion(id) {
       return "inactiva";
    }
 }
+
+
+// Chequear actividad y desloguear.
+let ultimaActividad = new Date();
+function checkInactividad() {
+   let currentTime = new Date();
+   let diffInMinutes = (currentTime - ultimaActividad) / 1000 / 60;
+   if (diffInMinutes > 2) {
+      desloguear();
+   }
+}
+//setInterval(checkInactividad, 60000);
+
+function desloguear() {
+   localStorage.removeItem("userVerificado");
+   localStorage.removeItem("admin");
+   localStorage.removeItem("userIndex");
+   window.location.href = "../index.html";
+}
+
+document.addEventListener('mousemove', function () {
+   ultimaActividad = new Date();
+});
+document.addEventListener('keypress', function () {
+   ultimaActividad = new Date();
+});
+
+window.onload = function () {
+   checkInactividad();
+};
