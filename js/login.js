@@ -85,7 +85,6 @@ function login() {
       localStorage.setItem('userVerificado', true);
       localStorage.setItem('admin', false);
       localStorage.setItem('userIndex', JSON.stringify(userIndex));
-      localStorage.removeItem('usersArray');
       window.location.href = "pages/clientpanel.html";
    }
 }

@@ -1,0 +1,77 @@
+#nutrienteUnico {
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   border-bottom: 1px solid $color-accent2;
+   margin-bottom: 15px;
+}
+
+#datosPersonalesRow {
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   border-bottom: 1px solid $color-accent2;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+#miSuscripcionRow {
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   border-bottom: 1px solid $color-accent2;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+#planIndividual {
+   display: flex;
+   flex-wrap: nowrap;
+   flex-direction: column;
+   text-align: left;
+   justify-content: space-between;
+   border-bottom: 1px solid $color-accent2;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+#contenidoListaUl {
+   li {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid $color-dark;
+      padding-bottom: 15px;
+      padding-top: 15px;
+
+      #listaSubsRow {
+         display: flex;
+         justify-content: space-between;
+         border: 1px solid rgba(0, 0, 0, 0.1);
+         padding: 5px;
+         margin: 2px;
+      }
+   }
+}
+
+#actualizarPreciosItem {
+   .radioButtons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+
+      label {
+         margin-right: 5px;
+      }
+   }
+
+   .inputNuevoPrecio {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      input {
+         width: 70%;
+      }
+   }
+}

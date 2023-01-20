@@ -17,7 +17,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 80px;
+      height: 80px;
       border-radius: 2px;
       border: 2px solid $color-accent;
       color: $color-accent;
@@ -26,7 +26,7 @@
       box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
       -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
       -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
-      transition: 0.3s ease;
+      transition: 0.5s ease;
 
       &:hover {
          transform: scale(1.02);
@@ -51,5 +51,24 @@
          font-size: 1.5rem;
          width: 40px;
       }
+   }
+}
+
+.end__container {
+   text-align: center;
+   background: lighten($color-dark, 10);
+   max-width: 600px;
+   border-radius: 4px;
+   padding: 10px;
+   
+   h2 {
+      color: $color-accent;
+      font-size: 1rem;
+      font-weight: 700;
+   }
+
+   p {
+      color: $color-accent;
+      font-size: 0.8rem;
    }
 }

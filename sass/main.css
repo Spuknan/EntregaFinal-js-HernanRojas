@@ -77,7 +77,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80px;
+  height: 80px;
   border-radius: 2px;
   border: 2px solid #e5f876;
   color: #e5f876;
@@ -86,7 +86,7 @@
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
-  transition: 0.3s ease;
+  transition: 0.5s ease;
 }
 .options__card .options__button:hover {
   transform: scale(1.02);
@@ -107,6 +107,23 @@
 .options__card .options__button i {
   font-size: 1.5rem;
   width: 40px;
+}
+
+.end__container {
+  text-align: center;
+  background: #37393e;
+  max-width: 600px;
+  border-radius: 4px;
+  padding: 10px;
+}
+.end__container h2 {
+  color: #e5f876;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.end__container p {
+  color: #e5f876;
+  font-size: 0.8rem;
 }
 
 .login-card-container {
@@ -170,31 +187,104 @@
   transform: scale(0.99);
 }
 
-.end__container {
-  text-align: center;
-  background: #37393e;
-  max-width: 600px;
-  border-radius: 4px;
-  padding: 10px;
-}
-.end__container h2 {
-  color: #e5f876;
+#usuarioIndividual {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  text-align: left;
+  border-bottom: 2px solid #daadfa;
   font-size: 1rem;
-  font-weight: 700;
 }
-.end__container p {
-  color: #e5f876;
-  font-size: 0.8rem;
+#usuarioIndividual #usuarioIndividualRow {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
 }
 
-#usuarioIndividual {
-  margin-bottom: 15px;
-  padding-bottom: 5px;
+#agregarUsuarioForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#agregarUsuarioForm .agregarUsuarioGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
   text-align: left;
-  border-bottom: 1px solid #daadfa;
-  font-size: 1rem;
 }
 
 .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
   background: rgba(0, 0, 0, 0.8) !important;
+}
+
+#nutrienteUnico {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #daadfa;
+  margin-bottom: 15px;
+}
+
+#datosPersonalesRow {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #daadfa;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#miSuscripcionRow {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-bottom: 1px solid #daadfa;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#planIndividual {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-between;
+  border-bottom: 1px solid #daadfa;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#contenidoListaUl li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid #1f2023;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+#contenidoListaUl li #listaSubsRow {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  margin: 2px;
+}
+
+#actualizarPreciosItem .radioButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+#actualizarPreciosItem .radioButtons label {
+  margin-right: 5px;
+}
+#actualizarPreciosItem .inputNuevoPrecio {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#actualizarPreciosItem .inputNuevoPrecio input {
+  width: 70%;
 }/*# sourceMappingURL=main.css.map */

@@ -11,96 +11,80 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    <!-- bootstrap -->
    <link rel="stylesheet" href="../sass/main.css">
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script src="https://kit.fontawesome.com/523b2e5bc2.js" crossorigin="anonymous"></script> <!-- fontawesome -->
 </head>
 
 <body>
    <div class="main-container">
-         <h2 class="title">CODERGYM</h2>
-         <div class="end__container container-fluid">
-            <h2>Panel de control para administradores</h2>
-         </div>
+      <h2 class="title">CODERGYM</h2>
+      <div class="end__container container-fluid">
+         <h2>Panel de control para clientes</h2>
+      </div>
 
-         <div class="options__card">
-            <div class="col">
-               <div id="todosLosClientes" class="options__button">
-                  <i class="fa-solid fa-users"></i>
-                  <div class="col">
-                     <p>Todos los clientes</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="buscarCliente" class="options__button">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                  <div class="col">
-                     <p>Buscar cliente por id</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="proximosVencimientos" class="options__button">
-                  <i class="fa-solid fa-file-invoice-dollar"></i>
-                  <div class="col">
-                     <p>Próximos vencimientos</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="clientesAtrasados" class="options__button">
-                  <i class="fa-solid fa-receipt"></i>
-                  <div class="col">
-                     <p>Clientes atrasados</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="verSuscripciones" class="options__button">
-                  <i class="fa-solid fa-dumbbell"></i>
-                  <div class="col">
-                     <p>Ver suscripciones</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="actualizarPrecios" class="options__button">
-                  <i class="fa-solid fa-tags"></i>
-                  <div class="col">
-                     <p>Actualizar precios</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="crearUsuario" class="options__button">
-                  <i class="fa-solid fa-user-plus"></i>
-                  <div class="col">
-                     <p>Crear usuario</p>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div id="irALogin" class="options__button">
-                  <i class="fa-regular fa-circle-xmark"></i>
-                  <div class="col">
-                     <p>Salir</p>
-                  </div>
+      <div class="options__card">
+         <div class="col">
+            <div id="datosPersonales" class="options__button">
+               <i class="fa-solid fa-id-card"></i>
+               <div class="col">
+                  <p>Mis datos personales</p>
                </div>
             </div>
          </div>
 
-         <div class="end__container container-fluid">
-            <div id="userNameInfo"></div>
+         <div class="col">
+            <div id="miSuscripcion" class="options__button">
+               <i class="fa-solid fa-file-invoice-dollar"></i>
+               <div class="col">
+                  <p>Suscripcion activa</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col">
+            <div id="infoContacto" class="options__button">
+               <i class="fa-solid fa-phone"></i>
+               <div class="col">
+                  <p>Contacto</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col">
+            <div id="verSuscripciones" class="options__button">
+               <i class="fa-solid fa-tag"></i>
+               <div class="col">
+                  <p>Planes</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col">
+            <div id="infoNutricional" class="options__button">
+               <i class="fa-solid fa-utensils"></i>
+               <div class="col">
+                  <p>Info nutricional</p>
+               </div>
+            </div>
+         </div>
+
+         <div class="col">
+            <div id="irALogin" class="options__button">
+               <i class="fa-regular fa-circle-xmark"></i>
+               <div class="col">
+                  <p>Salir</p>
+               </div>
+            </div>
          </div>
       </div>
 
-   <script src="../js/clientpanel.js"></script>
+      <div class="end__container container-fluid">
+         <div id="userNameInfo"></div>
+      </div>
+   </div>
+
+   <script src="../js/userpanel.js"></script>
+   <script src="../js/general.js"></script>
 </body>
 
 </html>
