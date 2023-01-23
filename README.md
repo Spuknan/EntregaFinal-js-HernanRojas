@@ -8,4 +8,4 @@ admin -> user: hrojas | pass: 1234
 cliente -> user: mgomez | pass: 1234
 
 
-Link a github pages: https://github.com/Spuknan/EntregaFinal-js-HernanRojas
+Link a github pages: https://spuknan.github.io/EntregaFinal-js-HernanRojas/index.html
