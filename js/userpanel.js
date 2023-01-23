@@ -122,12 +122,25 @@ async function infoNutricional() {
    const comida = await Swal.fire({
       title: 'Ingresa el nombre de la comida',
       input: 'text',
-      inputPlaceholder: 'Ej. manzana'
+      inputPlaceholder: 'Ej. manzana',
+      confirmButtonColor: '#000000'
    });
    // Si el usuario presiona cancelar o cierra la alerta, se detiene la función
    if (!comida.value) return;
+
+   // se muestra un mensaje de carga
+   Swal.fire({
+      title: 'Cargando...',
+      onBeforeOpen: () => {
+         Swal.showLoading();
+      },
+      showLoaderOnConfirm: true,
+      confirmButtonColor: '#000000',
+   });
+
    // Se realiza la petición a la API con la comida ingresada
    const response = await fetch(`https://api.nal.usda.gov/fdc/v1/search?api_key=ib31wbUa2MgbgDRWEiVRiEcHqaKww6EevqPeM6B8&generalSearchInput=${comida.value}`);
+
    // Si el codigo de respuesta es distinto a 200 se muestra un mensaje de error
    if (!response.ok) {
       Swal.fire({
@@ -139,6 +152,7 @@ async function infoNutricional() {
       return;
    }
    const data = await response.json();
+
    // Si no se encuentran resultados, se muestra una alerta al usuario
    if (data.foods.length === 0) {
       Swal.fire({
@@ -156,6 +170,8 @@ async function infoNutricional() {
    let message = nutrientes.map(nutrient => {
       return `<div id="nutrienteUnico"><p>${nutrient.nutrientName}: </p><p>${nutrient.value} ${nutrient.unitName}</p></div>`;
    }).join('');
+   // Se oculta el mensaje de carga
+   Swal.close();
 
    // Se muestra la información nutricional en una alerta
    Swal.fire({

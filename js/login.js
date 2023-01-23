@@ -15,11 +15,11 @@ class Users {
 }
 
 const usersArray = [
-   new Users(0, "admin", "admin", "00.000.000", "01/01/2000", "admin", "admin", 3, "19/01/2023", true),
-   new Users(1, "Maria", "Gomez", "37.469.321", "06/11/1994", "mgomez", "1234", 1, "19/12/2022", false),
-   new Users(2, "Pedro", "Lopez", "41.647.155", "09/08/1998", "plopez", "1234", 2, "05/9/2022", false),
+   new Users(0, "admin", "admin", "00.000.000", "01/01/2000", "admin", "admin", 3, "01/19/2023", true),
+   new Users(1, "Maria", "Gomez", "37.469.321", "06/11/1994", "mgomez", "1234", 3, "01/01/2022", false),
+   new Users(2, "Pedro", "Lopez", "41.647.155", "09/08/1998", "plopez", "1234", 2, "09/05/2022", false),
    new Users(3, "Juana", "Gonzalez", "35.314.885", "01/02/1993", "jgonzalez", "1234", 3, "01/19/2022", false),
-   new Users(4, "Jose", "Rodriguez", "39.563.481", "09/05/1996", "jrodriguez", "1234", 3, "01/19/2022", false),
+   new Users(4, "Jose", "Rodriguez", "39.563.481", "09/05/1996", "jrodriguez", "1234", 3, "01/25/2022", false),
    new Users(5, "Hernán", "Rojas", "39.430.811", "07/02/1996", "hrojas", "1234", 0, false, true)   
 ];
 let userCount = usersArray.length;

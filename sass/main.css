@@ -213,10 +213,22 @@
   width: 100%;
   align-items: center;
   text-align: left;
+  font-size: 1rem;
 }
 
 .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
   background: rgba(0, 0, 0, 0.8) !important;
+}
+
+#usuarioVencimientoIndividual ul {
+  display: block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #1f2023;
+}
+#usuarioVencimientoIndividual ul li {
+  list-style: none;
+  text-align: left;
 }
 
 #nutrienteUnico {

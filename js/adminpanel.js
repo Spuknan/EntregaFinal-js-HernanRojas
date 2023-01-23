@@ -44,42 +44,42 @@ function crearUsuario() {
       <div id="agregarUsuarioForm">
          <div class="agregarUsuarioGroup">
             <div><label for="nombre">Nombre:</div>
-            <div><input id="nombre" placeholder="Nombre" class="swal2-input"></div>
+            <div><input id="nombre" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="apellido">Apellido:</div>
-            <div><input id="apellido" placeholder="Apellido" class="swal2-input"></div>
+            <div><input id="apellido" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="DNI">DNI:</div>
-            <div><input id="dni" placeholder="DNI" class="swal2-input"></div>
+            <div><input id="dni" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="fechaNacimiento">Fecha de nacimiento:</div>
-            <div><input type="date" id="fechaNacimiento" placeholder="Fecha de nacimiento (dd/mm/yyyy)" class="swal2-input"></div>
+            <div><input type="date" id="fechaNacimiento" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="usuario">Nombre de usuario</div>
-            <div><input id="usuario" placeholder="Usuario" class="swal2-input"></div>
+            <div><input id="usuario"" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="contrasena">Contraseña:</div>
-            <div><input id="contrasena" placeholder="Contraseña" class="swal2-input"></div>
+            <div><input id="contrasena" class="swal2-input"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="ultimoNivelSuscripcion">Suscripcion:</div>
-            <div><input type="date" id="ultimoNivelSuscripcion" placeholder="Último nivel de suscripción (0, 1, 2, 3)" class="swal2-input"></div>
+            <div><input type="number" id="ultimoNivelSuscripcion" class="swal2-input" min="0" max="3"></div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label for="ultimaFechaPago">Fecha de pago:</div>
-            <div><input type="date" id="ultimaFechaPago" placeholder="Última fecha de pago (dd/mm/yyyy)" class="swal2-input"> </div>
+            <div><input type="date" id="ultimaFechaPago" class="swal2-input"> </div>
          </div>
          <div class="agregarUsuarioGroup">
             <div><label>Es administrador:</label></div>
             <div><input id="admin" type="checkbox" class="swal2-checkbox"></div>
          </div>
       </div>
-     `,
+      `,
       showCancelButton: true,
       confirmButtonText: 'Agregar',
       cancelButtonText: 'Cancelar',
@@ -90,11 +90,11 @@ function crearUsuario() {
             nombre: document.getElementById('nombre').value,
             apellido: document.getElementById('apellido').value,
             dni: document.getElementById('dni').value,
-            fechaNacimiento: document.getElementById('fechaNacimiento').value,
+            fechaNacimiento: dayjs(document.getElementById('fechaNacimiento').value).format('MM/DD/YYYY'),
             usuario: document.getElementById('usuario').value,
             contrasena: document.getElementById('contrasena').value,
             ultimoNivelSuscripcion: document.getElementById('ultimoNivelSuscripcion').value,
-            ultimaFechaPago: document.getElementById('ultimaFechaPago').value,
+            ultimaFechaPago: dayjs(document.getElementById('ultimaFechaPago').value).format('MM/DD/YYYY'),
             admin: document.getElementById('admin').checked //<-- changed from .value to .checked
          }
       }
@@ -139,6 +139,7 @@ function crearUsuario() {
                confirmButtonText: 'OK',
                confirmButtonColor: '#000000'
             });
+            console.table(usersArray);
          }
       }
    });
@@ -148,30 +149,26 @@ function crearUsuario() {
 
 // Funcion para ver clientes atrasados.
 function clientesAtrasados() {
-   let clientesAtrasados = [];
-   let hoy = new Date();
+   let clientesInactivos = [];
    for (let i = 0; i < usersArray.length; i++) {
-      let fechaVencimiento = new Date(usersArray[i].ultimaFechaPago);
-      fechaVencimiento.setMonth(fechaVencimiento.getMonth() + suscripcionesArray[usersArray[i].ultimoNivelSuscripcion].duracion);
-      if (hoy > fechaVencimiento) {
-         clientesAtrasados.push(' ' + usersArray[i].nombre + ' ' + usersArray[i].apellido);
+      let estadoSuscripcion = validarSuscripcion(i);
+      if (estadoSuscripcion === "Inactiva") {
+         clientesInactivos.push(usersArray[i].nombre);
       }
    }
-   if (clientesAtrasados.length > 0) {
+   if (clientesInactivos.length > 0) {
       Swal.fire({
-         title: 'Clientes con suscripciones vencidas',
-         html: clientesAtrasados,
+         title: 'Clientes con suscripciones inactivas',
+         text: clientesInactivos.join(', '),
          icon: 'warning',
-         confirmButtonText: 'Ok',
          confirmButtonColor: '#000000'
-      });
+      })
    } else {
       Swal.fire({
-         title: 'No hay clientes con suscripciones vencidas',
-         icon: 'info',
-         confirmButtonText: 'Ok',
+         title: 'Todas las suscripciones están activas',
+         icon: 'success',
          confirmButtonColor: '#000000'
-      });
+      })
    }
 }
 
@@ -186,7 +183,7 @@ function verSuscripciones() {
          "<div id='listaSubsRow'><p>ID: </p><p>" + suscripciones[i].id + "</p></div>" +
          "<div id='listaSubsRow'><p>Nombre: </p><p>" + suscripciones[i].nombre + "</p></div>" +
          "<div id='listaSubsRow'><p>Duración: </p><p>" + suscripciones[i].duracion + " meses</p></div>" +
-         "<div id='listaSubsRow'><p>Precio: </p><p>" + suscripciones[i].precio + "</p></div>" +
+         "<div id='listaSubsRow'><p>Precio: </p><p>$" + suscripciones[i].precio + "</p></div>" +
          "</li>";
    }
    Swal.fire({
@@ -208,27 +205,27 @@ function actualizarPrecios() {
       html:
          '<div id="actualizarPreciosItem">' +
 
-            '<div class="radioButtons">' +
-               '<div class="form-group">' +
-                  '<label for="suscripcion1">Mensual</label>' +
-                  '<input type="radio" id="suscripcion1" name="suscripcionCheckbox" value="1">' +
-               '</div>' +
+         '<div class="radioButtons">' +
+         '<div class="form-group">' +
+         '<label for="suscripcion1">Mensual</label>' +
+         '<input type="radio" id="suscripcion1" name="suscripcionCheckbox" value="1">' +
+         '</div>' +
 
-               '<div class="form-group">' +
-                  '<label for="suscripcion2">Trimestral</label>' +
-                  '<input type="radio" id="suscripcion2" name="suscripcionCheckbox" value="2">' +
-               '</div>' +
+         '<div class="form-group">' +
+         '<label for="suscripcion2">Trimestral</label>' +
+         '<input type="radio" id="suscripcion2" name="suscripcionCheckbox" value="2">' +
+         '</div>' +
 
-               '<div class="form-group">' +
-                  '<label for="suscripcion3">Anual</label>' +
-                  '<input type="radio" id="suscripcion3" name="suscripcionCheckbox" value="3">' +
-               '</div>' +
-            '</div>' +
+         '<div class="form-group">' +
+         '<label for="suscripcion3">Anual</label>' +
+         '<input type="radio" id="suscripcion3" name="suscripcionCheckbox" value="3">' +
+         '</div>' +
+         '</div>' +
 
-            '<div class="form-group inputNuevoPrecio">' +
-               '<label for="nuevoPrecio">Nuevo precio:</label>' +
-               '<input id="nuevoPrecio" type="number" min="0">' +
-            '</div>' +
+         '<div class="form-group inputNuevoPrecio">' +
+         '<label for="nuevoPrecio">Nuevo precio:</label>' +
+         '<input id="nuevoPrecio" type="number" min="0">' +
+         '</div>' +
 
          '</div>',
       showCancelButton: true,
@@ -254,34 +251,87 @@ function actualizarPrecios() {
 
 // Funcion para mostrar proximos vencimientos.
 function proximosVencimientos() {
-   let proximosVencimientosArray = [];
-   let hoy = new Date();
-   let fechaVencimiento;
+   let suscripcionesProximasAVencer = [];
+   // Recuperar los datos de los usuarios y suscripciones del localStorage
+   let usersArray = JSON.parse(localStorage.getItem('usersArray'));
+   let suscripcionesArray = JSON.parse(localStorage.getItem('suscripcionesArray'));
+   // Iterar a través de los usuarios
    for (let i = 0; i < usersArray.length; i++) {
-      fechaVencimiento = new Date(usersArray[i].ultimaFechaPago);
-      fechaVencimiento.setMonth(fechaVencimiento.getMonth() + suscripcionesArray[usersArray[i].ultimoNivelSuscripcion].duracion);
-      if (fechaVencimiento > hoy) {
-         proximosVencimientosArray.push(usersArray[i]);
+      // Obtener la suscripción del usuario
+      let suscripcion = usersArray[i].ultimoNivelSuscripcion;
+      // Crear una variable para la fecha de pago
+      let fechaDePago = usersArray[i].ultimaFechaPago;
+      // Si el usuario no tiene una fecha de pago registrada, continuar con el siguiente usuario
+      if (!fechaDePago) {
+         continue;
+      }
+      // Crear una variable para la fecha de vencimiento (suma de fecha de pago + duración de suscripción en meses)
+      let fechaVencimiento = dayjs(fechaDePago).add(suscripcionesArray[suscripcion].duracion, 'month');
+      // Crear una variable para la fecha actual
+      let fechaActual = dayjs();
+      // Calcular la diferencia entre la fecha actual y la fecha de vencimiento en días
+      let diferenciaEnDias = fechaVencimiento.diff(fechaActual, 'day');
+      // Si la diferencia es menor o igual a 14, agregar el usuario al arreglo de suscripcionesProximasAVencer
+      if (diferenciaEnDias <= 14 && fechaActual < fechaVencimiento) {
+         usersArray[i].fechaVencimiento = fechaVencimiento.format('DD/MM/YYYY');
+         suscripcionesProximasAVencer.push(usersArray[i]);
       }
    }
-   if (proximosVencimientosArray.length > 0) {
-      let message = "Los siguientes clientes tienen suscripciones próximas a vencer: <br>";
-      for (let i = 0; i < proximosVencimientosArray.length; i++) {
-         message += `- ${proximosVencimientosArray[i].nombre} ${proximosVencimientosArray[i].apellido} - <br>`;
+   if (suscripcionesProximasAVencer.length > 0) {
+      let listaUsuarios = "";
+      for (let i = 0; i < suscripcionesProximasAVencer.length; i++) {
+         listaUsuarios += `
+         <div id="usuarioVencimientoIndividual">
+            <ul>
+               <li> <strong>Usuario:</strong></li>
+               <li> ${suscripcionesProximasAVencer[i].nombre} ${suscripcionesProximasAVencer[i].apellido}</li>
+               <li> <strong>Fecha de vencimiento:</strong></li>
+               <li>${suscripcionesProximasAVencer[i].fechaVencimiento}</li>
+            </ul>
+         </div>`
       }
       Swal.fire({
-         title: 'Próximos vencimientos',
-         html: message,
+         title: 'Suscripciones próximas a vencer',
+         html: '<ul>' + listaUsuarios + '</ul>',
          icon: 'info',
          confirmButtonColor: '#000000'
       });
    } else {
       Swal.fire({
-         title: 'Próximos vencimientos',
-         text: 'Actualmente no hay suscripciones próximas a vencer.',
+         title: 'No hay suscripciones próximas a vencer',
+         text: 'Todas las suscripciones están al día.',
          icon: 'info',
          confirmButtonColor: '#000000'
       });
+   }
+}
+
+
+function validarSuscripcion(userId) {
+   // Obtener el usuario específico
+   let usuarioBuscado = usersArray[userId];
+   console.log("Usuario buscado: " + usuarioBuscado.nombre);
+   // Obtener la suscripción del usuario
+   let suscripcion = usersArray[userId].ultimoNivelSuscripcion;
+   console.log("Nivel de suscripcion: " + suscripcion);
+   // Crear una variable para la fecha de pago
+   let fechaDePago = usuarioBuscado.ultimaFechaPago;
+   console.log("Ultima fecha de pago: " + fechaDePago);
+
+   if (!fechaDePago) {
+      return "Inactiva";
+   }
+   // Crear una variable para la fecha de vencimiento (suma de fecha de pago + duración de suscripción en meses)
+   let fechaVencimiento = dayjs(fechaDePago).add(suscripcionesArray[suscripcion].duracion, 'month').format('DD/MM/YYYY');
+   console.log("Fecha de vencimiento: " + fechaVencimiento);
+   // Crear una variable para la fecha actual
+   let fechaActual = dayjs();
+   console.log("Fecha Actual: ", fechaActual);
+
+   if (dayjs(fechaVencimiento).isBefore(fechaActual)) {
+      return "Inactiva";
+   } else {
+      return "Activa";
    }
 }
 
@@ -397,27 +447,6 @@ function todosLosClientes() {
    });
 }
 
-function validarSuscripcion(id) {
-   // encontrar el usuario en el array de usuarios
-   let usuario = usersArray.find(x => x.id == id);
-   // obtener la fecha de último pago y nivel de suscripción del usuario
-   let ultimaFechaPago = usuario.ultimaFechaPago;
-   let nivelSuscripcion = usuario.ultimoNivelSuscripcion;
-   // si el usuario no tiene una fecha de último pago registrada, devolver "inactiva"
-   if (!ultimaFechaPago) {
-      return "inactiva";
-   }
-   // si el usuario tiene una fecha de último pago registrada, calcular la fecha de vencimiento
-   let duracionSuscripcion = suscripcionesArray[nivelSuscripcion].duracion;
-   let fechaVencimiento = new Date(ultimaFechaPago);
-   fechaVencimiento.setMonth(fechaVencimiento.getMonth() + duracionSuscripcion);
-   // si la fecha actual es anterior a la fecha de vencimiento, devolver "activa"
-   if (new Date() < fechaVencimiento) {
-      return "activa";
-   } else {
-      return "inactiva";
-   }
-}
 
 // Función desloguearse e ir al login.
 function irALogin() {
