@@ -6,3 +6,6 @@ Este es un simulador de un panel de control para un gimnasio. Se puede ingresar 
 admin -> user: hrojas | pass: 1234
 
 cliente -> user: mgomez | pass: 1234
+
+
+Link a github pages: https://github.com/Spuknan/EntregaFinal-js-HernanRojas
